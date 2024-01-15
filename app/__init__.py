@@ -2,7 +2,7 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 
-from elasticsearch import Elasticsearch
+# from elasticsearch import Elasticsearch
 from flask import Flask, request, current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -41,8 +41,8 @@ def create_app(config_class=Config):
     from app.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
 
-    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
-        if app.config[app.config['ELASTICSEARCH_URL']] else None
+    # app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+    #     if app.config[app.config['ELASTICSEARCH_URL']] else None
 
     if not app.debug:
         if app.config['MAIL_SERVER']:
